@@ -46,7 +46,7 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-      <div className="bg-white/60 dark:bg-black/30 backdrop-blur-2xl border border-white/30 dark:border-white/10 shadow-lg rounded-full px-4 py-3 flex items-center gap-2">
+      <div className="bg-card/50 backdrop-blur-2xl border border-border/40 shadow-lg rounded-full px-4 py-3 flex items-center gap-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
