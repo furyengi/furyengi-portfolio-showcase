@@ -11,8 +11,8 @@ const Hero = () => {
   ];
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-24">
-      <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
+    <section id="home" className="min-h-screen flex items-center px-6 pt-24">
+      <div className="max-w-4xl animate-fade-in-up">
         <div className="mb-8 inline-block">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 shadow-xl animate-float">
             <img 
@@ -31,16 +31,16 @@ const Hero = () => {
           @furyengi
         </p>
 
-        <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl mx-auto text-balance">
+        <p className="text-xl md:text-2xl text-foreground/80 mb-8 max-w-3xl text-balance">
           Full-Stack Web Developer
         </p>
 
-        <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
           Creating innovative solutions and captivating designs. 
           Crafting seamless digital experiences from front to back.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <div className="flex flex-wrap items-center gap-4 mb-12">
           <Button 
             size="lg" 
             className="rounded-full px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
@@ -55,7 +55,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center gap-4">
           {socialLinks.map((social) => {
             const Icon = social.icon;
             return (
