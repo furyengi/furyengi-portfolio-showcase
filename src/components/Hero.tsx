@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center px-6 pt-24">
       <div className="max-w-4xl animate-fade-in-up">
-        <div className="mb-8 inline-block">
+        <div className="mb-8">
           <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/10 shadow-xl animate-float">
             <img 
               src={profileImage} 
