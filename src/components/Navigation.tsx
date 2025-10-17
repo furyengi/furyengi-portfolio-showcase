@@ -41,7 +41,7 @@ const Navigation = () => {
 
   const actionItems = [
     { id: "contact", icon: Mail, label: "Contact" },
-    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Business", url: "https://wa.me/message/YOUR_WHATSAPP_NUMBER" },
+    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Business", url: "https://api.whatsapp.com/send/?phone=2348159309399&text&type=phone_number&app_absent=0" },
   ];
 
   return (
