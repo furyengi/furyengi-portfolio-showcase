@@ -2,11 +2,59 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import emailjs from "@emailjs/browser";
+import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    
+    try {
+      await emailjs.send(
+        "service_998a0en",
+        "template_u7zkuqi",
+        {
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+        },
+        "FmOoLHSdkpdhLD1wf"
+      );
+      
+      toast({
+        title: "Message sent!",
+        description: "Thank you for contacting me. I'll get back to you soon.",
+      });
+      
+      reset();
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or email me directly at contactfuryengi@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,7 +108,7 @@ const Contact = () => {
           </div>
           
           <div className="glass rounded-3xl p-8 shadow-xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Your Name
@@ -68,10 +116,13 @@ const Contact = () => {
                 <Input
                   id="name"
                   type="text"
-                  placeholder="John Doe"
                   className="rounded-xl"
-                  required
+                  {...register("name")}
+                  disabled={isSubmitting}
                 />
+                {errors.name && (
+                  <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                )}
               </div>
               
               <div>
@@ -81,10 +132,13 @@ const Contact = () => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="john@example.com"
                   className="rounded-xl"
-                  required
+                  {...register("email")}
+                  disabled={isSubmitting}
                 />
+                {errors.email && (
+                  <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
+                )}
               </div>
               
               <div>
@@ -95,12 +149,16 @@ const Contact = () => {
                   id="message"
                   placeholder="Tell me about your project..."
                   className="rounded-xl min-h-[150px]"
-                  required
+                  {...register("message")}
+                  disabled={isSubmitting}
                 />
+                {errors.message && (
+                  <p className="text-sm text-destructive mt-1">{errors.message.message}</p>
+                )}
               </div>
               
-              <Button type="submit" size="lg" className="w-full rounded-xl">
-                Send Message
+              <Button type="submit" size="lg" className="w-full rounded-xl" disabled={isSubmitting}>
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
