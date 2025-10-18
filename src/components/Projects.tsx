@@ -48,32 +48,32 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-16 sm:py-24">
+    <section id="projects" className="min-h-screen flex items-center px-6 py-24">
       <div className="max-w-6xl w-full">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-10 sm:mb-16">Featured Projects</h2>
+        <h2 className="text-5xl md:text-6xl font-bold mb-16">Featured Projects</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="glass rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="glass rounded-3xl p-8 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">{project.title}</h3>
-              <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">{project.description}</p>
+              <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+              <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
               
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-secondary text-secondary-foreground text-xs sm:text-sm font-medium"
+                    className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
               
-              <div className="flex gap-2 sm:gap-3">
+              <div className="flex gap-3">
                 <Button 
                   variant="outline" 
                   size="sm" 
