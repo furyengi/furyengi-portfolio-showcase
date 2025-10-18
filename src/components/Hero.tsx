@@ -1,4 +1,4 @@
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile-image.jpg";
 
@@ -6,7 +6,7 @@ const Hero = () => {
   const socialLinks = [
     { icon: "x", label: "X (Twitter)", url: "https://x.com/furyengi" },
     { icon: Instagram, label: "Instagram", url: "https://instagram.com/furyengi" },
-    { icon: Linkedin, label: "LinkedIn", url: "https://linkedin.com/in/furyengi" },
+    { icon: Github, label: "GitHub", url: "https://github.com/furyengi" },
     { icon: "tiktok", label: "TikTok", url: "https://tiktok.com/@furyengi" },
   ];
 
