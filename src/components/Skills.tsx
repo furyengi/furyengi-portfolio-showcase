@@ -41,7 +41,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="min-h-screen flex items-center px-4 sm:px-6 py-16 sm:py-24">
+    <section id="skills" className="min-h-screen flex items-center px-4 sm:px-6 lg:px-12 xl:px-16 py-16 sm:py-24">
       <div className="max-w-6xl w-full">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-10 sm:mb-16">Skills & Expertise</h2>
         
