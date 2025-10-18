@@ -41,25 +41,25 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="min-h-screen flex items-center px-6 py-24">
+    <section id="skills" className="min-h-screen flex items-center px-4 sm:px-6 py-16 sm:py-24">
       <div className="max-w-6xl w-full">
-        <h2 className="text-5xl md:text-6xl font-bold mb-16">Skills & Expertise</h2>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-10 sm:mb-16">Skills & Expertise</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
             return (
               <div
                 key={skill.title}
-                className="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="glass rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${skill.gradient} flex items-center justify-center mb-4`}>
-                  <Icon className="w-7 h-7 text-foreground" />
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${skill.gradient} flex items-center justify-center mb-3 sm:mb-4`}>
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-foreground" />
                 </div>
                 
-                <h3 className="text-xl font-bold mb-3">{skill.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{skill.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{skill.title}</h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{skill.description}</p>
               </div>
             );
           })}

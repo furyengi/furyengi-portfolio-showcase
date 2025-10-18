@@ -45,8 +45,8 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-      <div className="bg-card/50 backdrop-blur-2xl border border-border/40 shadow-lg rounded-full px-4 py-3 flex items-center gap-2">
+    <nav className="fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
+      <div className="bg-card/50 backdrop-blur-2xl border border-border/40 shadow-lg rounded-full px-2 sm:px-4 py-2 sm:py-3 flex items-center gap-1 sm:gap-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
@@ -56,7 +56,7 @@ const Navigation = () => {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`
-                relative p-3 rounded-full transition-all duration-300
+                relative p-2 sm:p-3 rounded-full transition-all duration-300
                 ${isActive 
                   ? "bg-primary text-primary-foreground" 
                   : "hover:bg-secondary/50 text-foreground"
@@ -64,12 +64,12 @@ const Navigation = () => {
               `}
               aria-label={item.label}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           );
         })}
         
-        <div className="w-px h-8 bg-border/50 mx-1" />
+        <div className="w-px h-6 sm:h-8 bg-border/50 mx-0.5 sm:mx-1" />
         
         {actionItems.map((item) => {
           const Icon = item.icon;
@@ -82,10 +82,10 @@ const Navigation = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative p-3 rounded-full transition-all duration-300 hover:bg-secondary/50 text-foreground"
+                className="relative p-2 sm:p-3 rounded-full transition-all duration-300 hover:bg-secondary/50 text-foreground"
                 aria-label={item.label}
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             );
           }
@@ -95,7 +95,7 @@ const Navigation = () => {
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className={`
-                relative p-3 rounded-full transition-all duration-300
+                relative p-2 sm:p-3 rounded-full transition-all duration-300
                 ${isActive 
                   ? "bg-primary text-primary-foreground" 
                   : "hover:bg-secondary/50 text-foreground"
@@ -103,7 +103,7 @@ const Navigation = () => {
               `}
               aria-label={item.label}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           );
         })}
