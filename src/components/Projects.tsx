@@ -72,20 +72,20 @@ const Projects = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed line-clamp-2">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               
                 <div className="flex gap-3">
                   <Button 
