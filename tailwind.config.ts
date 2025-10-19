@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        'typewriter': ['Courier Prime', 'Courier New', 'monospace'],
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
