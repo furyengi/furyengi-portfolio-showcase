@@ -5,31 +5,59 @@ const Projects = () => {
   const progressSteps = [
     {
       title: "Ideation & Research",
-      description: "Market research and concept validation",
+      description: "Conducted comprehensive market analysis, competitor research, and validated the core concept through user interviews and surveys.",
       icon: Lightbulb,
-      status: "Completed Oct 15, 2025",
-      statusType: "completed"
+      status: "Completed",
+      statusType: "completed",
+      date: "Oct 15, 2025",
+      progress: 100,
+      details: [
+        "Market analysis completed",
+        "User interviews conducted",
+        "Business model validated"
+      ]
     },
     {
       title: "MVP Development",
-      description: "Building the core features and functionality",
+      description: "Currently building the core product features, setting up infrastructure, and implementing the main user workflows and functionality.",
       icon: Code,
-      status: "in_progress",
-      statusType: "in-progress"
+      status: "In Progress",
+      statusType: "in-progress",
+      date: "Oct 20 - Dec 15, 2025",
+      progress: 65,
+      details: [
+        "Frontend development 80%",
+        "Backend APIs 60%",
+        "Database schema finalized"
+      ]
     },
     {
       title: "Beta Testing",
-      description: "User testing and feedback collection",
+      description: "Invite select users to test the product, collect feedback, identify bugs, and iterate on the user experience before public launch.",
       icon: TestTube,
       status: "Starting Soon",
-      statusType: "upcoming"
+      statusType: "upcoming",
+      date: "Dec 20, 2025",
+      progress: 0,
+      details: [
+        "Test group selection pending",
+        "Feedback framework ready",
+        "Bug tracking system setup"
+      ]
     },
     {
       title: "Launch",
-      description: "Official product release and marketing",
+      description: "Official product release with marketing campaign, press outreach, and community engagement to drive initial user adoption.",
       icon: Rocket,
-      status: "Q1 2026",
-      statusType: "upcoming"
+      status: "Planned",
+      statusType: "upcoming",
+      date: "Q1 2026",
+      progress: 0,
+      details: [
+        "Marketing strategy defined",
+        "Launch materials prepared",
+        "Community outreach planned"
+      ]
     }
   ];
 
@@ -59,13 +87,13 @@ const Projects = () => {
             </div>
 
             {/* Right Side - Progress Steps */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               {progressSteps.map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <div
                     key={step.title}
-                    className="bg-background/50 backdrop-blur-sm rounded-xl p-4 hover:scale-[1.02] transition-all duration-300 border border-border/50"
+                    className="bg-background/50 backdrop-blur-sm rounded-xl p-5 hover:scale-[1.01] transition-all duration-300 border border-border/50"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="flex items-start gap-4">
@@ -76,9 +104,12 @@ const Projects = () => {
                       </div>
                       
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-4 mb-1">
-                          <h3 className="text-lg font-bold text-foreground">{step.title}</h3>
-                          <span className={`flex-shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                        <div className="flex items-start justify-between gap-4 mb-2">
+                          <div>
+                            <h3 className="text-lg font-bold text-foreground mb-1">{step.title}</h3>
+                            <p className="text-xs text-muted-foreground">{step.date}</p>
+                          </div>
+                          <span className={`flex-shrink-0 px-3 py-1 rounded-full text-xs font-semibold ${
                             step.statusType === 'completed' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
                             step.statusType === 'in-progress' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
                             'bg-muted/50 text-muted-foreground border border-border'
@@ -86,7 +117,36 @@ const Projects = () => {
                             {step.status}
                           </span>
                         </div>
-                        <p className="text-muted-foreground text-sm">{step.description}</p>
+                        
+                        <p className="text-muted-foreground text-sm mb-3">{step.description}</p>
+                        
+                        {/* Progress Bar */}
+                        <div className="mb-3">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="text-xs text-muted-foreground">Progress</span>
+                            <span className="text-xs font-semibold text-foreground">{step.progress}%</span>
+                          </div>
+                          <div className="h-2 bg-muted rounded-full overflow-hidden">
+                            <div 
+                              className={`h-full transition-all duration-500 ${
+                                step.statusType === 'completed' ? 'bg-green-500' :
+                                step.statusType === 'in-progress' ? 'bg-amber-500' :
+                                'bg-muted-foreground/30'
+                              }`}
+                              style={{ width: `${step.progress}%` }}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Details List */}
+                        <ul className="space-y-1">
+                          {step.details.map((detail, idx) => (
+                            <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
+                              <span className="w-1 h-1 rounded-full bg-primary" />
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </div>
