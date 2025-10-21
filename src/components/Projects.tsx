@@ -70,23 +70,24 @@ const Projects = () => {
           </h2>
         </div>
 
-        <div className="glass rounded-3xl p-8 lg:p-12 animate-fade-in">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Left Side - Image */}
-            <div className="relative">
-              <img 
-                src={comingSoonImage} 
-                alt="Coming Soon Project" 
-                className="rounded-2xl w-full h-auto object-cover shadow-lg"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-2xl">
-                <h3 className="text-4xl md:text-5xl font-bold text-white">
-                  Coming Soon
-                </h3>
-              </div>
+        <div className="glass rounded-3xl overflow-hidden animate-fade-in">
+          {/* Top - Image Banner */}
+          <div className="relative h-64 md:h-80 lg:h-96">
+            <img 
+              src={comingSoonImage} 
+              alt="Coming Soon Project" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/40 via-black/50 to-black/60">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
+                Coming Soon
+              </h3>
             </div>
+          </div>
 
-            {/* Right Side - Progress Steps */}
+          {/* Bottom - Progress Steps */}
+          <div className="p-8 lg:p-12">
+            <h3 className="text-2xl font-bold text-foreground mb-6">Project Progress</h3>
             <div className="space-y-6">
               {progressSteps.map((step, index) => {
                 const Icon = step.icon;
