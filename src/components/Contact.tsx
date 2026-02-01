@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,7 +41,7 @@ const Contact = () => {
       
       toast({
         title: "Message sent!",
-        description: "Thank you for contacting me. I'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
       
       reset();
@@ -57,66 +57,77 @@ const Contact = () => {
     }
   };
 
+  const contactInfo = [
+    { icon: Mail, label: "Email", value: "contact@furyengi.dev", href: "mailto:contact@furyengi.dev" },
+    { icon: Phone, label: "Phone", value: "Available on request", href: null },
+    { icon: MapPin, label: "Location", value: "Remote / Worldwide", href: null },
+  ];
+
   return (
     <section id="contact" className="min-h-screen flex items-center px-6 py-24">
-      <div className="max-w-5xl w-full">
-        <h2 className="text-5xl md:text-6xl font-bold mb-16">Get In Touch</h2>
+      <div className="max-w-6xl w-full mx-auto">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-4 block">
+            Contact
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Let's{" "}
+            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              Connect
+            </span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a project in mind or just want to chat? I'd love to hear from you.
+          </p>
+        </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 animate-fade-in">
+          {/* Left - Contact Info */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Let's work together</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities 
-                to be part of your vision. Feel free to reach out!
+            <div className="glass-sage rounded-2xl p-8">
+              <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                I'm always excited to discuss new projects, creative ideas, or 
+                opportunities to collaborate. Drop me a message!
               </p>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full glass">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Email</p>
-                  <a href="mailto:contact@furyengi.dev" className="text-muted-foreground hover:text-primary transition-colors">
-                    contact@furyengi.dev
-                  </a>
-                </div>
-              </div>
               
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full glass">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">Available on request</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full glass">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Location</p>
-                  <p className="text-muted-foreground">Remote / Worldwide</p>
-                </div>
+              <div className="space-y-6">
+                {contactInfo.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.label} className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl gradient-sage flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-5 h-5 text-primary-foreground" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">{item.label}</p>
+                        {item.href ? (
+                          <a href={item.href} className="font-medium text-foreground hover:text-primary transition-colors">
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="font-medium text-foreground">{item.value}</p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
           
-          <div className="glass rounded-3xl p-8 shadow-xl">
+          {/* Right - Form */}
+          <div className="glass-sage rounded-2xl p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
+                  Name
                 </label>
                 <Input
                   id="name"
                   type="text"
-                  className="rounded-xl"
+                  placeholder="Your name"
+                  className="rounded-xl bg-background/50 border-border/50 focus:border-primary"
                   {...register("name")}
                   disabled={isSubmitting}
                 />
@@ -127,12 +138,13 @@ const Contact = () => {
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Your Email
+                  Email
                 </label>
                 <Input
                   id="email"
                   type="email"
-                  className="rounded-xl"
+                  placeholder="your@email.com"
+                  className="rounded-xl bg-background/50 border-border/50 focus:border-primary"
                   {...register("email")}
                   disabled={isSubmitting}
                 />
@@ -148,7 +160,7 @@ const Contact = () => {
                 <Textarea
                   id="message"
                   placeholder="Tell me about your project..."
-                  className="rounded-xl min-h-[150px]"
+                  className="rounded-xl bg-background/50 border-border/50 focus:border-primary min-h-[150px]"
                   {...register("message")}
                   disabled={isSubmitting}
                 />
@@ -157,8 +169,20 @@ const Contact = () => {
                 )}
               </div>
               
-              <Button type="submit" size="lg" className="w-full rounded-xl" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : "Send Message"}
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full rounded-xl gradient-sage text-primary-foreground border-0" 
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send Message
+                    <Send className="w-4 h-4 ml-2" />
+                  </>
+                )}
               </Button>
             </form>
           </div>
