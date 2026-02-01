@@ -1,4 +1,4 @@
-import { Home, Code2, Briefcase, Mail, FileText, MessageCircle } from "lucide-react";
+import { Home, User, Code2, Briefcase, Mail, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
   Tooltip,
@@ -40,20 +40,20 @@ const Navigation = () => {
 
   const navItems = [
     { id: "home", icon: Home, label: "Home" },
-    { id: "about", icon: FileText, label: "About" },
+    { id: "about", icon: User, label: "About" },
     { id: "skills", icon: Code2, label: "Skills" },
     { id: "projects", icon: Briefcase, label: "Projects" },
   ];
 
   const actionItems = [
     { id: "contact", icon: Mail, label: "Contact" },
-    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp Business", url: "https://api.whatsapp.com/send/?phone=2348159309399&text&type=phone_number&app_absent=0" },
+    { id: "whatsapp", icon: MessageCircle, label: "WhatsApp", url: "https://api.whatsapp.com/send/?phone=2348159309399&text&type=phone_number&app_absent=0" },
   ];
 
   return (
     <TooltipProvider>
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-        <div className="bg-card/50 backdrop-blur-2xl border border-border/40 shadow-lg rounded-full px-4 py-3 flex items-center gap-2">
+        <div className="bg-card/70 backdrop-blur-2xl border border-primary/20 shadow-lg rounded-full px-2 py-2 flex items-center gap-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -66,8 +66,8 @@ const Navigation = () => {
                     className={`
                       relative p-3 rounded-full transition-all duration-300
                       ${isActive 
-                        ? "bg-primary text-primary-foreground" 
-                        : "hover:bg-secondary/50 text-foreground"
+                        ? "gradient-sage text-primary-foreground shadow-md" 
+                        : "hover:bg-primary/10 text-foreground"
                       }
                     `}
                     aria-label={item.label}
@@ -75,14 +75,14 @@ const Navigation = () => {
                     <Icon className="w-5 h-5" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="bg-card border-primary/20">
                   <p>{item.label}</p>
                 </TooltipContent>
               </Tooltip>
             );
           })}
           
-          <div className="w-px h-8 bg-border/50 mx-1" />
+          <div className="w-px h-6 bg-primary/20 mx-1" />
           
           {actionItems.map((item) => {
             const Icon = item.icon;
@@ -96,13 +96,13 @@ const Navigation = () => {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative p-3 rounded-full transition-all duration-300 hover:bg-secondary/50 text-foreground"
+                      className="relative p-3 rounded-full transition-all duration-300 hover:bg-primary/10 text-foreground"
                       aria-label={item.label}
                     >
                       <Icon className="w-5 h-5" />
                     </a>
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent className="bg-card border-primary/20">
                     <p>{item.label}</p>
                   </TooltipContent>
                 </Tooltip>
@@ -117,8 +117,8 @@ const Navigation = () => {
                     className={`
                       relative p-3 rounded-full transition-all duration-300
                       ${isActive 
-                        ? "bg-primary text-primary-foreground" 
-                        : "hover:bg-secondary/50 text-foreground"
+                        ? "gradient-sage text-primary-foreground shadow-md" 
+                        : "hover:bg-primary/10 text-foreground"
                       }
                     `}
                     aria-label={item.label}
@@ -126,7 +126,7 @@ const Navigation = () => {
                     <Icon className="w-5 h-5" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent className="bg-card border-primary/20">
                   <p>{item.label}</p>
                 </TooltipContent>
               </Tooltip>
