@@ -1,6 +1,6 @@
 import { Instagram, Github, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile-image.jpg";
+import profileImage from "@/assets/profile.jpg";
 
 const Hero = () => {
   const socialLinks = [
@@ -27,32 +27,32 @@ const Hero = () => {
                 Mahmud
               </span>
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-muted-foreground mb-2 font-medium">
-              Full-Stack Developer
+              Developer
             </p>
-            
+
             <p className="text-muted-foreground mb-8">
               @furyengi
             </p>
 
             <p className="text-lg text-foreground/80 mb-8 max-w-lg leading-relaxed">
-              I craft beautiful, functional web experiences with modern technologies. 
+              I craft beautiful, functional web experiences with modern technologies.
               From concept to deployment, I bring ideas to life.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-8">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-full px-8 py-6 text-base shadow-lg hover:shadow-xl transition-all gradient-sage text-primary-foreground border-0"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get in Touch
               </Button>
-              
-              <Button 
+
+              <Button
                 variant="outline"
-                size="lg" 
+                size="lg"
                 className="rounded-full px-8 py-6 text-base border-2 border-primary/30 hover:bg-primary/10"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
@@ -73,7 +73,7 @@ const Hero = () => {
                       aria-label={social.label}
                     >
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                       </svg>
                     </a>
                   );
@@ -89,7 +89,7 @@ const Hero = () => {
                       aria-label={social.label}
                     >
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
                       </svg>
                     </a>
                   );
@@ -116,9 +116,9 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent rounded-full blur-2xl" />
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img 
-                  src={profileImage} 
-                  alt="Mahmud Abdulmalik" 
+                <img
+                  src={profileImage}
+                  alt="Mahmud Abdulmalik"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -131,7 +131,7 @@ const Hero = () => {
 
         {/* Scroll indicator */}
         <div className="flex justify-center mt-12 lg:mt-16 animate-bounce">
-          <button 
+          <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             className="p-3 rounded-full bg-secondary/50 hover:bg-secondary transition-colors"
             aria-label="Scroll to about section"
