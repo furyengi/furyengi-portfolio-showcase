@@ -1,26 +1,26 @@
-import { Code2, Palette, Zap, Heart } from "lucide-react";
+import { Workflow, Server, Cloud, ShieldCheck } from "lucide-react";
 
 const About = () => {
   const highlights = [
     {
-      icon: Code2,
-      title: "Clean Code",
-      description: "Writing maintainable, scalable solutions"
+      icon: Workflow,
+      title: "Pipeline Automation",
+      description: "Builds, tests, and deployments with minimal manual effort"
     },
     {
-      icon: Palette,
-      title: "Design Eye",
-      description: "Creating visually stunning interfaces"
+      icon: Server,
+      title: "Backend Systems",
+      description: "API platforms with async workers, queues, and caching"
     },
     {
-      icon: Zap,
-      title: "Performance",
-      description: "Optimized for speed and efficiency"
+      icon: Cloud,
+      title: "Cloud Engineering",
+      description: "Deployments on AWS, DigitalOcean, and pxxl.app"
     },
     {
-      icon: Heart,
-      title: "Passion",
-      description: "Dedicated to continuous learning"
+      icon: ShieldCheck,
+      title: "Reliability Focus",
+      description: "Containerized, reproducible, and observable infrastructure"
     }
   ];
 
@@ -34,7 +34,7 @@ const About = () => {
               About Me
             </span>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-              Building digital experiences that{" "}
+              Building backend platforms that{" "}
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                 matter
               </span>
@@ -42,20 +42,31 @@ const About = () => {
             
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                I'm a passionate full-stack developer with a love for creating elegant 
-                solutions to complex problems. My journey in tech started with curiosity 
-                and has evolved into a career focused on building impactful digital products.
+                I am a Backend &amp; DevOps Engineer focused on cloud and platform engineering
+                with automation-driven infrastructure. I design systems that make delivery faster,
+                safer, and easier to scale.
               </p>
               
               <p>
-                With expertise spanning frontend frameworks like React to backend 
-                technologies like Node.js, I bridge the gap between beautiful design 
-                and robust functionality.
+                Since 2025, I have built self-initiated production-style projects including
+                a custom CI/CD runner, a scalable API platform, and internal automation tooling
+                for infrastructure and deployments.
               </p>
               
               <p>
-                When I'm not coding, you'll find me exploring new technologies, 
-                contributing to open-source, or sharing knowledge with the developer community.
+                My core stack includes Python, TypeScript, Bash, FastAPI, Django, Node.js,
+                Docker, Kubernetes, Terraform, Ansible, PostgreSQL, Redis, and Celery/RabbitMQ.
+              </p>
+            </div>
+
+            <div className="mt-8 p-5 glass-sage rounded-2xl">
+              <p className="text-sm font-semibold text-foreground mb-2">Experience</p>
+              <p className="text-sm text-muted-foreground">
+                Backend &amp; DevOps Engineer | Self-Initiated Projects (2025 - Present)
+              </p>
+              <p className="text-sm text-muted-foreground mt-3">
+                Open Source: In progress | Education: To be added | Certifications: To be added |
+                Blogs: To be added | Achievements: To be added
               </p>
             </div>
           </div>

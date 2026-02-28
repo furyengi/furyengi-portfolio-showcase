@@ -49,7 +49,7 @@ const Contact = () => {
       console.error("Failed to send email:", error);
       toast({
         title: "Failed to send message",
-        description: "Please try again or email me directly at contactfuryengi@gmail.com",
+        description: "Please try again or email me directly at contact@furyengi.dev",
         variant: "destructive",
       });
     } finally {
@@ -60,7 +60,7 @@ const Contact = () => {
   const contactInfo = [
     { icon: Mail, label: "Email", value: "contact@furyengi.dev", href: "mailto:contact@furyengi.dev" },
     { icon: Phone, label: "Phone", value: "Available on request", href: null },
-    { icon: MapPin, label: "Location", value: "Remote / Worldwide", href: null },
+    { icon: MapPin, label: "Location", value: "Africa | Remote worldwide", href: null },
   ];
 
   return (
@@ -77,7 +77,7 @@ const Contact = () => {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind or just want to chat? I'd love to hear from you.
+            Open to remote backend, DevOps, and cloud platform engineering opportunities worldwide.
           </p>
         </div>
         
@@ -87,8 +87,8 @@ const Contact = () => {
             <div className="glass-sage rounded-2xl p-8">
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                I'm always excited to discuss new projects, creative ideas, or 
-                opportunities to collaborate. Drop me a message!
+                If you need help with API platforms, cloud infrastructure, CI/CD automation,
+                or platform tooling, send a message and I will respond promptly.
               </p>
               
               <div className="space-y-6">
