@@ -1,78 +1,9 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { caseStudyHighlights, projects } from "@/data/projects";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "Custom CI/CD Runner",
-      subtitle: "Flagship Project",
-      description:
-        "A fully automated CI/CD runner built from scratch to orchestrate builds, tests, and deployments for multiple project stacks.",
-      features: [
-        "Automatic stack detection (Python / Node.js)",
-        "YAML-defined pipelines",
-        "Worker queue orchestration with parallel jobs",
-        "Dockerized isolation for reproducible builds",
-      ],
-      stack: ["Python", "Node.js", "Docker", "Celery/RQ", "PostgreSQL", "GitHub Actions", "pxxl.app"],
-      github: "[repo link]",
-      demo: "[link to runner dashboard if deployed]",
-    },
-    {
-      title: "Scalable API Platform",
-      subtitle: "Supporting Backend Project",
-      description:
-        "A cloud-ready API platform for multi-user SaaS use cases with role-based access and task automation.",
-      features: [
-        "RESTful / GraphQL APIs",
-        "RBAC authentication and permissions",
-        "Async background task processing",
-        "Caching and database optimization",
-      ],
-      stack: ["FastAPI / Django", "PostgreSQL", "Redis", "Docker", "pxxl.app", "GitHub Actions"],
-      github: "[repo link]",
-      demo: "[link if deployed]",
-    },
-    {
-      title: "Automation / Platform Toolset",
-      subtitle: "Supporting DevOps Project",
-      description:
-        "Internal automation tooling for cloud infrastructure operations and deployment workflows.",
-      features: [
-        "CLI for infrastructure and job orchestration",
-        "Automated build/deployment scripts",
-        "Backup and restore automation",
-        "Logging and monitoring utilities",
-      ],
-      stack: ["Python", "Bash", "Docker", "Terraform", "Git", "pxxl.app"],
-      github: "[repo link]",
-      demo: null,
-    },
-    {
-      title: "Cloud Deployment Demo",
-      subtitle: "Optional Supporting Project",
-      description:
-        "A cloud deployment demonstration covering full-stack rollout, observability, and rollback support.",
-      features: [
-        "Automated deployment pipelines",
-        "SSL, backups, and scaling setup",
-        "Monitoring and logging integration",
-        "Rollback and artifact versioning",
-      ],
-      stack: ["FastAPI / Next.js", "Docker", "pxxl.app", "GitHub Actions", "PostgreSQL"],
-      github: "[repo link]",
-      demo: "[link]",
-    },
-  ];
-
-  const caseStudyHighlights = [
-    "Worker-based architecture with Docker job isolation",
-    "Queue-driven execution via Celery/RQ for concurrency and retries",
-    "Pipeline engine driven by YAML configurations",
-    "Cloud-ready deployment model for pxxl.app, AWS, and DigitalOcean",
-    "Planned observability via Prometheus and Grafana",
-  ];
+  const navigate = useNavigate();
 
   return (
     <section id="projects" className="min-h-screen flex items-center justify-center px-6 py-24 lg:px-12">
@@ -93,45 +24,42 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 animate-fade-in items-start">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in items-stretch auto-rows-fr">
           {projects.map((project) => (
-            <article key={project.title} className="glass-sage rounded-2xl p-6">
+            <article
+              key={project.slug}
+              className="glass-sage rounded-2xl p-6 block h-full min-h-[430px] transition-transform duration-300 hover:-translate-y-1 cursor-pointer flex flex-col"
+              onClick={() => navigate(`/projects/${project.slug}`)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  navigate(`/projects/${project.slug}`);
+                }
+              }}
+              role="link"
+              tabIndex={0}
+            >
               <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{project.subtitle}</p>
               <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
               <p className="text-muted-foreground mb-4">{project.description}</p>
 
-              <div className="mb-5">
-                <p className="text-sm font-semibold mb-2">Key Capabilities</p>
-                <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-                  {project.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.stack.map((tech) => (
-                  <Badge key={tech} variant="secondary">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <Button variant="outline" size="sm" className="rounded-full" asChild>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="w-4 h-4 mr-2" />
-                    GitHub
-                  </a>
-                </Button>
-                {project.demo ? (
-                  <Button variant="outline" size="sm" className="rounded-full" asChild>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                ) : null}
+              <div className="flex items-center justify-between gap-3 mt-auto">
+                <div className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  View Key Details
+                  <ArrowUpRight className="w-4 h-4" />
+                </div>
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${project.title} GitHub repository`}
+                  className="text-primary hover:text-foreground transition-colors"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                  }}
+                >
+                  <Github className="w-5 h-5" />
+                </a>
               </div>
             </article>
           ))}
