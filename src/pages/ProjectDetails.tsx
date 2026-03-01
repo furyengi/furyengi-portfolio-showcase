@@ -3,10 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "@/data/projects";
+import cicd1 from "@/assets/cicd-1.png";
+import cicd2 from "@/assets/cicd-2.png";
+import cicd3 from "@/assets/cicd-3.png";
 
 const ProjectDetails = () => {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
+  const cicdGallery = [cicd1, cicd2, cicd3];
 
   if (!project) {
     return (
@@ -35,6 +39,25 @@ const ProjectDetails = () => {
           <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{project.subtitle}</p>
           <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
           <p className="text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
+
+          {project.slug === "custom-cicd-runner" ? (
+            <section className="mb-6">
+              <h2 className="text-lg font-semibold mb-3">Project Gallery</h2>
+              <div className="marquee-mask">
+                <div className="marquee-track" aria-label="Scrolling CI/CD project screenshots">
+                  {[...cicdGallery, ...cicdGallery].map((image, index) => (
+                    <img
+                      key={`${image}-${index}`}
+                      src={image}
+                      alt={`CI/CD runner dashboard screenshot ${index % cicdGallery.length + 1}`}
+                      className="h-48 md:h-56 w-auto rounded-xl border border-border/40"
+                      loading="lazy"
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
 
           <section className="mb-6">
             <h2 className="text-lg font-semibold mb-3">Key Capabilities</h2>

@@ -1,6 +1,7 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { caseStudyHighlights, projects } from "@/data/projects";
+import cicdPreview from "@/assets/cicd-1.png";
 
 const Projects = () => {
   const navigate = useNavigate();
@@ -39,8 +40,22 @@ const Projects = () => {
               role="link"
               tabIndex={0}
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{project.subtitle}</p>
-              <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+              {project.slug === "custom-cicd-runner" ? (
+                <>
+                  <img
+                    src={cicdPreview}
+                    alt="CI/CD runner preview"
+                    className="w-full h-40 object-cover rounded-xl border border-border/40 mb-4"
+                    loading="lazy"
+                  />
+                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                </>
+              ) : (
+                <>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">{project.subtitle}</p>
+                  <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                </>
+              )}
               <p className="text-muted-foreground mb-4">{project.description}</p>
 
               <div className="flex items-center justify-between gap-3 mt-auto">
@@ -67,7 +82,7 @@ const Projects = () => {
 
         <div className="mt-8 glass-sage rounded-2xl p-8 animate-fade-in">
           <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">Case Study</p>
-          <h3 className="text-2xl font-bold mb-3">Custom CI/CD Runner for Automated Build &amp; Deployment</h3>
+          <h3 className="text-2xl font-bold mb-3">RUNXR CI/CD Runner for Automated Build &amp; Deployment</h3>
           <p className="text-muted-foreground mb-6">
             Built as a self-hosted alternative for flexible multi-project pipelines with containerized execution,
             queue-based orchestration, and cloud deployment integration.

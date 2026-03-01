@@ -12,7 +12,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "custom-cicd-runner",
-    title: "Custom CI/CD Runner",
+    title: "RUNXR",
     subtitle: "Flagship Project",
     description:
       "A fully automated CI/CD runner built from scratch to orchestrate builds, tests, and deployments for multiple project stacks.",
